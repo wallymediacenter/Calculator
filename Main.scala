@@ -6,16 +6,8 @@ object Main{
 
     var input = "(33 + 3 + 3) -        2"
 
-    //Start to proccess input file
-    var temp = input.toCharArray.toBuffer
-
-    //Remove the white space
-    var tempIndex = for(i <- 0 until temp.length if(temp(i).isSpaceChar))  yield i
-    for(i <- tempIndex.reverse) temp.remove(i)
-
     //Scanning for tokens
-    input = temp.mkString
-    tempIndex = for(i <- 0 until input.length if( tokens.contains(input(i)) ))  yield i
+    var tempIndex = for(i <- 0 until input.length if( tokens.contains(input(i)) ))  yield i
     tempIndex = tempIndex.reverse
     var head = ""
     var tail = ""
@@ -27,6 +19,12 @@ object Main{
       tail = input.drop(tempIndex(i))
       input = head +' '+tail
       println(input)
+    }
+    var temp = input.split(' ')
+    println(temp.mkString(" | "))
+    //Remove
+    for(i <- temp){
+      if(temp.equals(' ')) println("Found space")
     }
   }
 }
